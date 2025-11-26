@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso EPES</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+        <script>
+            /* Variáveis de Cores */
+        :root {
+            --dark-purple: #5B3A8C;
+            --magenta: #FF0080;
+            --orange: #FDB92F;
+            --brown: #6B5344;
+            --light-purple: #B89FCC;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9; /* Fundo suave */
+        }
+
+        .word-cloud-container {
+            width: 80%;
+            max-width: 900px;
+            padding: 20px;
+            text-align: center;
+            line-height: 1.5; /* Espaçamento entre as linhas */
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .word {
+            display: inline-block;
+            margin: 5px 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Definição dos Tamanhos de Fonte */
+        .size-small {
+            font-size: 1.2em; /* Palavras menos importantes */
+            opacity: 0.7;
+        }
+
+        .size-medium {
+            font-size: 1.8em; /* Palavras importantes */
+            opacity: 0.85;
+        }
+
+        .size-large {
+            font-size: 3.0em; /* Palavras-chave principais */
+            opacity: 1;
+        }
+
+        /* Aplicação das Cores */
+        .color-dark-purple {
+            color: var(--dark-purple);
+        }
+
+        .color-magenta {
+            color: var(--magenta);
+        }
+
+        .color-orange {
+            color: var(--orange);
+        }
+
+        .color-brown {
+            color: var(--brown);
+        }
+
+        .color-light-purple {
+            color: var(--light-purple);
+        }
+
+        /* Interatividade (Hover) */
+        .word:hover {
+            transform: scale(1.15) rotate(2deg); /* Aumenta e gira levemente */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        /* Tooltip (Dica de contexto ao passar o mouse) */
+        .word::after {
+            content: attr(data-tooltip); /* Pega o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark-purple);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 0.7em;
+            font-weight: normal;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            pointer-events: none; /* Garante que o tooltip não atrapalhe o mouse */
+        }
+
+        .word:hover::after {
+            opacity: 1;
+            visibility: visible;
+            bottom: calc(100% + 5px); /* Posiciona acima da palavra */
+        }
+        </script>
+    <nav class="sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Módulos do Curso</h3>
+        <button class="close-btn material-icons">close</button>
+    </div>
+    <ul class="module-list">
+        <li><a href="/md01.html" class="module-item">Módulo 1 – Equidade em Saúde</a></li>
+        <li><a href="/md02.html" class="module-item disabled">Módulo 2 – População vulnerabilizada: Saúde, cenários de trabalho e políticas de equidade</a></li>
+        <li><a href="/md03.html" class="module-item disabled">Módulo 3 – Racismo e outros marcadores de preconceito e discriminação</a></li>
+        <li><a href="/md04.html" class="module-item disabled">Módulo 4 – Assédio e Violências no ambiente de trabalho</a></li>
+        <li><a href="/md05.html" class="module-item disabled">Módulo 5 – Saúde mental de trabalhadoras e trabalhadores da SUS</a></li>
+    </ul>
+</nav>
+    <div class="app-container">
+        <main class="main-content">
+            <header class="content-header">
+                <div class="logo-placeholder">
+                    <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="50" fill="#642f8d" />
+                        <text x="50" y="65" font-family="Arial, sans-serif" font-size="40" fill="white"
+                            text-anchor="middle">PET</text>
+                    </svg>
+                </div>
+                <span class="page-title-mobile">Educação Profissional Equidade em Saúde</span>
+            </header>
+
+            <h1 class="main-heading">Módulo 01: Introdução à Equidade em Saúde</h1>
+            <h5 dir="rtl">2. Seção</h5>
+
+            <section>
+              <div class="word-cloud-container">
+                <span class="word size-large color-dark-purple" data-tooltip="Tratamento justo de acordo com as necessidades.">Equidade</span>
+                <span class="word size-medium color-magenta" data-tooltip="O caminho para a Equidade.">Justiça</span>
+                <span class="word size-small color-orange" data-tooltip="Garantir as mesmas oportunidades.">Inclusão</span>
+                <span class="word size-medium color-brown" data-tooltip="Redução das desigualdades sociais.">Igualdade</span>
+                <span class="word size-large color-light-purple" data-tooltip="Reconhecer e valorizar as diferenças.">Diversidade</span>
+                <span class="word size-small color-dark-purple" data-tooltip="Apoio diferenciado e necessário.">Acesso</span>
+                <span class="word size-medium color-magenta" data-tooltip="Distribuição equilibrada.">Distribuição</span>
+                <span class="word size-small color-orange" data-tooltip="Ações que promovem a Equidade.">Apoio</span>
+                <span class="word size-medium color-brown" data-tooltip="Participação de todos.">Empoderamento</span>
+                <span class="word size-small color-light-purple" data-tooltip="Olhar para as necessidades individuais.">Reconhecimento</span>
+                <span class="word size-medium color-dark-purple" data-tooltip="Consciência das diferenças.">Consciência</span>
+                <span class="word size-large color-magenta" data-tooltip="Oportunidades que levam à Equidade.">Oportunidade</span>
+                <span class="word size-small color-orange" data-tooltip="Sem privilégios.">Imparcialidade</span>
+                <span class="word size-medium color-brown" data-tooltip="Respeito e consideração.">Respeito</span>
+                <span class="word size-small color-light-purple" data-tooltip="Justiça nas relações.">Social</span>
+                <span class="word size-small color-dark-purple" data-tooltip="Ações para corrigir injustiças.">Correção</span>
+                <span class="word size-medium color-magenta" data-tooltip="Igualdade de resultados.">Paridade</span>
+            </div>
+            </section>
+            <div class="navigation-container">                
+                <a class="nav-button anterior" href="md01.html" role="button" aria-label="Voltar ao início">&lt; Inicial</a>
+                <a class="nav-button proximo" href="md01_ferramenta.html" role="button" aria-label="Próximo conteúdo">Próximo &gt;</a>
+            </div>
+            <hr class="section-divider">
+            <footer class="page-footer">
+                <div class="footer-box">
+                    <img src="Imagem/PET.png" alt="Logotipo PET Equidade">
+                    <img src="Imagem/NESP.png" alt="Logotipo NESP">
+                    <img src="Imagem/UFPI.png" alt="Logotipo UFPI">
+                    <img src="Imagem/ESPPI.png" alt="Logotipo ESP-PI">
+                    <img src="Imagem/sesapi.png" alt="Logotipo SESAPI">
+                    <img src="Imagem/SUS.png" alt="Logotipo SUS">
+                </div>
+                <p class="footer-academy">PET:Equidade</p>
+                <a href="#" class="footer-link">Suporte e ajuda</a>
+                <p class="footer-copyright">&copy; 2025, ESP-PI. Todos os direitos reservados</p>
+
+                <hr class="section-divider short-divider">
+                <p class="footer-developer">
+                    Desenvolvido por
+                    <span class="developer-name">David Leôncio</span>
+                </p>
+            </footer>
+
+        </main>
+    </div>
+    <script src="json.js"></script>
+</body>
+
+</html>

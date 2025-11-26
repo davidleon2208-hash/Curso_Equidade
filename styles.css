@@ -1,0 +1,364 @@
+/* Variáveis CSS para Cores */
+:root {
+    --primary-color: #5B3A8C; /* Roxo Escuro */
+    --secondary-color: #FF0080; /* Magenta */
+    --accent-color: #FDB92F; /* Laranja */
+    --support-color: #6B5344; /* Marrom */
+    --complement-color: #B89FCC; /* Roxo Claro */
+    --text-light: #FFFFFF;
+    --text-dark: #333333;
+    --background-light: #F4F4F9;
+}
+
+/* --- Estilos Gerais e Layout --- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--background-light); /* Fundo claro para o corpo */
+    color: var(--text-dark);
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Container principal da aplicação (para manter o conteúdo ao lado da sidebar) */
+.app-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Sidebar (Navegação) --- */
+
+.sidebar {
+    width: 280px;
+    background-color: var(--primary-color); /* Roxo Escuro */
+    color: var(--text-light);
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--complement-color); /* Roxo Claro */
+    padding-bottom: 15px;
+}
+
+.sidebar-title {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.module-list {
+    list-style: none;
+}
+
+.module-item {
+    display: block;
+    padding: 12px 10px;
+    color: var(--text-light);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s;
+}
+
+.module-item:hover {
+    background-color: #7A5DA7; /* Roxo Escuro mais claro */
+}
+
+.module-item:focus {
+    outline: 2px solid var(--accent-color); /* Laranja como foco */
+}
+
+/* --- Conteúdo Principal (Main Content) --- */
+
+.main-content {
+    margin-left: 280px; /* Offset para a sidebar fixa */
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* --- Cabeçalho do Conteúdo --- */
+
+.content-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--complement-color); /* Roxo Claro */
+}
+
+.logo-placeholder {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.logo-icon circle {
+    fill: var(--primary-color); /* Roxo Escuro */
+}
+
+.logo-icon text {
+    fill: var(--text-light);
+    font-weight: bold;
+}
+
+.page-title-mobile {
+    font-size: 1.5em;
+    color: var(--primary-color); /* Roxo Escuro */
+    font-weight: 600;
+}
+
+/* --- Títulos e Seções --- */
+
+.main-heading {
+    font-size: 2em;
+    color: var(--primary-color); /* Roxo Escuro */
+    margin-bottom: 10px;
+}
+
+h5[dir="rtl"] {
+    color: var(--support-color); /* Marrom */
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.content-card_mod {
+    background-color: var(--text-light);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--complement-color); /* Borda Roxo Claro */
+    margin-bottom: 30px;
+}
+
+.resumo_mod h2, .questoes_mod h2 {
+    color: var(--primary-color); /* Roxo Escuro */
+    border-bottom: 2px solid var(--secondary-color); /* Sublinhado Magenta */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.resumo_mod p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.qtoes {
+    color: var(--support-color); /* Marrom */
+    font-style: italic;
+    margin: 20px 0;
+    padding: 10px;
+    border-left: 5px solid var(--accent-color); /* Destaque Laranja */
+    background-color: #FEF7E8; /* Fundo leve para o destaque */
+}
+
+.questoes_mod ul {
+    margin-left: 25px;
+}
+
+.questoes_mod li {
+    margin-bottom: 10px;
+}
+
+/* --- Botões de Navegação --- */
+
+.navigation-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    min-width: 120px;
+}
+
+.anterior {
+    background-color: var(--complement-color); /* Roxo Claro */
+    color: var(--primary-color);
+}
+
+.anterior:hover {
+    background-color: #9C7EC2;
+}
+
+.proximo {
+    background-color: var(--accent-color); /* Laranja */
+    color: var(--text-light);
+}
+
+.proximo:hover {
+    background-color: #E0A020;
+}
+
+/* --- Rodapé --- */
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--complement-color); /* Roxo Claro */
+    margin: 40px 0;
+}
+
+.short-divider {
+    width: 50px;
+    margin: 15px auto;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: var(--text-light);
+}
+
+.footer-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.footer-box img {
+    height: 35px; /* Ajuste o tamanho conforme necessário */
+    object-fit: contain;
+}
+
+.footer-academy {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.footer-link {
+    color: var(--secondary-color); /* Link Magenta */
+    margin-bottom: 10px;
+    display: block;
+}
+
+.footer-copyright {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 10px;
+}
+
+.footer-developer {
+    font-size: 0.9em;
+    color: var(--support-color); /* Marrom */
+}
+
+.developer-name {
+    font-weight: bold;
+}
+
+/* --- Responsividade (Ajustes para telas menores) --- */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; /* Torna a sidebar parte do fluxo normal */
+        box-shadow: none;
+        padding-bottom: 0;
+    }
+
+    .sidebar-header {
+        border-bottom: none;
+    }
+    
+    .close-btn {
+        display: none; /* Mantém a sidebar aberta na versão simplificada para mobile */
+    }
+
+    .module-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .module-item {
+        flex: 1 1 auto; /* Permite que os itens se ajustem em linha */
+        text-align: center;
+        padding: 8px 10px;
+        background-color: #7A5DA7;
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove o offset da sidebar */
+        padding: 20px;
+    }
+
+    .content-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo-placeholder {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .page-title-mobile {
+        font-size: 1.2em;
+    }
+    
+    .footer-box img {
+        height: 30px;
+    }
+}
+.module-item.disabled {
+    pointer-events: none; /* Impede o clique */
+    opacity: 0.5; /* Torna-o visualmente desativado */
+    cursor: default; /* Altera o cursor para não indicar ação */
+}
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Ajuste o valor conforme necessário */
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
