@@ -10,116 +10,6 @@
 </head>
 
 <body>
-        <script>
-            /* Variáveis de Cores */
-        :root {
-            --dark-purple: #5B3A8C;
-            --magenta: #FF0080;
-            --orange: #FDB92F;
-            --brown: #6B5344;
-            --light-purple: #B89FCC;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9; /* Fundo suave */
-        }
-
-        .word-cloud-container {
-            width: 80%;
-            max-width: 900px;
-            padding: 20px;
-            text-align: center;
-            line-height: 1.5; /* Espaçamento entre as linhas */
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .word {
-            display: inline-block;
-            margin: 5px 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        /* Definição dos Tamanhos de Fonte */
-        .size-small {
-            font-size: 1.2em; /* Palavras menos importantes */
-            opacity: 0.7;
-        }
-
-        .size-medium {
-            font-size: 1.8em; /* Palavras importantes */
-            opacity: 0.85;
-        }
-
-        .size-large {
-            font-size: 3.0em; /* Palavras-chave principais */
-            opacity: 1;
-        }
-
-        /* Aplicação das Cores */
-        .color-dark-purple {
-            color: var(--dark-purple);
-        }
-
-        .color-magenta {
-            color: var(--magenta);
-        }
-
-        .color-orange {
-            color: var(--orange);
-        }
-
-        .color-brown {
-            color: var(--brown);
-        }
-
-        .color-light-purple {
-            color: var(--light-purple);
-        }
-
-        /* Interatividade (Hover) */
-        .word:hover {
-            transform: scale(1.15) rotate(2deg); /* Aumenta e gira levemente */
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
-        
-        /* Tooltip (Dica de contexto ao passar o mouse) */
-        .word::after {
-            content: attr(data-tooltip); /* Pega o texto do atributo data-tooltip */
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--dark-purple);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            white-space: nowrap;
-            font-size: 0.7em;
-            font-weight: normal;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            pointer-events: none; /* Garante que o tooltip não atrapalhe o mouse */
-        }
-
-        .word:hover::after {
-            opacity: 1;
-            visibility: visible;
-            bottom: calc(100% + 5px); /* Posiciona acima da palavra */
-        }
-        </script>
     <nav class="sidebar">
     <div class="sidebar-header">
         <h3 class="sidebar-title">Módulos do Curso</h3>
@@ -146,29 +36,33 @@
                 <span class="page-title-mobile">Educação Profissional Equidade em Saúde</span>
             </header>
 
-            <h1 class="main-heading">Módulo 01: Introdução à Equidade em Saúde</h1>
+            <h1 class="main-heading">Módulo 01: Nuvem de Palavras sobre Equidade ☁️</h1>
             <h5 dir="rtl">2. Seção</h5>
 
             <section>
-              <div class="word-cloud-container">
-                <span class="word size-large color-dark-purple" data-tooltip="Tratamento justo de acordo com as necessidades.">Equidade</span>
-                <span class="word size-medium color-magenta" data-tooltip="O caminho para a Equidade.">Justiça</span>
-                <span class="word size-small color-orange" data-tooltip="Garantir as mesmas oportunidades.">Inclusão</span>
-                <span class="word size-medium color-brown" data-tooltip="Redução das desigualdades sociais.">Igualdade</span>
-                <span class="word size-large color-light-purple" data-tooltip="Reconhecer e valorizar as diferenças.">Diversidade</span>
-                <span class="word size-small color-dark-purple" data-tooltip="Apoio diferenciado e necessário.">Acesso</span>
-                <span class="word size-medium color-magenta" data-tooltip="Distribuição equilibrada.">Distribuição</span>
-                <span class="word size-small color-orange" data-tooltip="Ações que promovem a Equidade.">Apoio</span>
-                <span class="word size-medium color-brown" data-tooltip="Participação de todos.">Empoderamento</span>
-                <span class="word size-small color-light-purple" data-tooltip="Olhar para as necessidades individuais.">Reconhecimento</span>
-                <span class="word size-medium color-dark-purple" data-tooltip="Consciência das diferenças.">Consciência</span>
-                <span class="word size-large color-magenta" data-tooltip="Oportunidades que levam à Equidade.">Oportunidade</span>
-                <span class="word size-small color-orange" data-tooltip="Sem privilégios.">Imparcialidade</span>
-                <span class="word size-medium color-brown" data-tooltip="Respeito e consideração.">Respeito</span>
-                <span class="word size-small color-light-purple" data-tooltip="Justiça nas relações.">Social</span>
-                <span class="word size-small color-dark-purple" data-tooltip="Ações para corrigir injustiças.">Correção</span>
-                <span class="word size-medium color-magenta" data-tooltip="Igualdade de resultados.">Paridade</span>
-            </div>
+    <div class="word-cloud-container">
+        <a href="#justica" class="word size-xl color-1" data-description="Dar a cada um o que é seu, reconhecendo as diferenças e necessidades individuais.">Justiça</a>
+        <a href="#igualdade" class="word size-m color-2" data-description="O princípio de que todos devem ser tratados da mesma forma perante a lei, mas a equidade reconhece que o ponto de partida é diferente.">Igualdade</a>
+        <a href="#diversidade" class="word size-l color-3" data-description="A presença de diferentes características e perspectivas (raça, gênero, orientação, etc.) em um grupo.">Diversidade</a>
+        <a href="#inclusao" class="word size-xxl color-4" data-description="Ação de acolher e garantir a participação plena de todos, valorizando suas diferenças.">Inclusão</a>
+        <a href="#acessibilidade" class="word size-s color-5" data-description="Garantir que pessoas com deficiência tenham acesso a tudo (espaços, informações, serviços).">Acessibilidade</a>
+        <a href="#oportunidade" class="word size-l color-6" data-description="Oferecer chances proporcionais e adaptadas às necessidades de cada indivíduo.">Oportunidade</a>
+        <a href="#merito" class="word size-m color-1" data-description="O reconhecimento do esforço e talento, mas a equidade garante que todos tenham as condições básicas para competir.">Mérito</a>
+        <a href="#direitos" class="word size-xl color-2" data-description="Garantias universais que protegem indivíduos e grupos contra ações ou omissões que interfiram nas liberdades fundamentais.">Direitos</a>
+        <a href="#respeito" class="word size-s color-3" data-description="Consideração pelos sentimentos, desejos e direitos dos outros.">Respeito</a>
+        <a href="#protagonismo" class="word size-l color-4" data-description="Dar voz e poder de decisão aos grupos historicamente marginalizados.">Protagonismo</a>
+        <a href="#recursos" class="word size-m color-5" data-description="Distribuição justa de bens e ferramentas para suprir as necessidades.">Recursos</a>
+        <a href="#interseccionalidade" class="word size-xxl color-6" data-description="Reconhecimento de que as várias formas de discriminação (gênero, raça, classe) se sobrepõem e se intensificam.">Interseccionalidade</a>
+        <a href="#voz" class="word size-s color-1" data-description="O direito de se expressar e ser ouvido nas decisões que afetam sua vida.">Voz</a>
+        <a href="#imparcialidade" class="word size-m color-2" data-description="Agir sem favorecimento, considerando todos os lados de forma justa.">Imparcialidade</a>
+        <a href="#transformacao" class="word size-xl color-3" data-description="Mudanças estruturais na sociedade para construir um ambiente mais equitativo.">Transformação</a>
+        <a href="#equidade" class="word size-xxl color-2" data-description="Reconhecimento das diferenças e necessidades individuais para garantir justiça e igualdade de oportunidades.">Equidade</a>
+    </div>
+
+    <div id="description-box">
+        <p>Clique em uma palavra na nuvem para ver a descrição.</p>
+    </div>
+
             </section>
             <div class="navigation-container">                
                 <a class="nav-button anterior" href="md01.html" role="button" aria-label="Voltar ao início">&lt; Inicial</a>
@@ -198,6 +92,17 @@
         </main>
     </div>
     <script src="json.js"></script>
+    <script>
+        // JavaScript para exibir a descrição (Simulando uma ação de clique sem recarregar a página)
+        document.querySelectorAll('.word').forEach(wordLink => {
+            wordLink.addEventListener('click', function(event) {
+                event.preventDefault(); // Impede o link de recarregar a página
+                const description = this.getAttribute('data-description');
+                const descriptionBox = document.getElementById('description-box');
+                descriptionBox.innerHTML = `<p>${description}</p>`;
+            });
+        });
+    </script>
 </body>
 
 </html>
