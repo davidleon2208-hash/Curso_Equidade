@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PET-Saúde Equidade | Educação Profissional Equidade em Saúde</title>
     <meta name="author" content="David Perfeito Leôncio">
-    <meta http-equiv="refresh" content="0">
      <!-- Carregamento do Tailwind CSS para utilitários de estilo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -988,6 +987,14 @@
         <!-- Será preenchido via script -->
     </div>
     <script>
+        // Verifica se já visitou
+        if (!localStorage.getItem("visitou")) {
+            // Marca como visitado
+            localStorage.setItem("visitou", "sim");
+
+            // Faz o refresh apenas uma vez
+            window.location.reload();
+        }
         (function(){
             // Cria o elemento da personagem apresentadora e o balão
             const presenter = document.getElementById('rosa-presenter');
