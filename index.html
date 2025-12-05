@@ -987,14 +987,6 @@
         <!-- Será preenchido via script -->
     </div>
     <script>
-        // Verifica se já visitou
-        if (!localStorage.getItem("visitou")) {
-            // Marca como visitado
-            localStorage.setItem("visitou", "sim");
-
-            // Faz o refresh apenas uma vez
-            window.location.reload();
-        }
         (function(){
             // Cria o elemento da personagem apresentadora e o balão
             const presenter = document.getElementById('rosa-presenter');
