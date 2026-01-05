@@ -5,4 +5,4 @@ const meuBotao = document.getElementById('.module-item disabled');
 meuBotao.disabled = true;
 
 // 3. Reativar (se necessário)
-// meuBotao.disabled = false;
+ meuBotao.disabled = false;
