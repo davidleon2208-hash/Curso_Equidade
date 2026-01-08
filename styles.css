@@ -430,20 +430,20 @@ h1 {
 /* --- Posicionamento para evitar sobreposição e dar formato de nuvem --- */
 /* Estes valores são ajustados manualmente para caber no container de 800x400 */
 .word:nth-child(1) { top: 20px; left:20px; } /* Justiça */
-.word:nth-child(2) { top: 70px; left: 150px; } /* Igualdade */
-.word:nth-child(3) { top: 150px; left: 50px; } /* Diversidade */
+.word:nth-child(2) { top: 70px; left: 10px; } /* Igualdade */
+.word:nth-child(3) { top: 140px; left: 50px; } /* Diversidade */
 .word:nth-child(4) { top: 120px; right: 80px; } /* Inclusão */
-.word:nth-child(5) { top: 220px; left: 450px; } /* Acessibilidade */
-.word:nth-child(6) { top: 70px; right: 300px; } /* Oportunidade */
+.word:nth-child(5) { top: 240px; left: 450px; } /* Acessibilidade */
+.word:nth-child(6) { top: 100px; right: 340px; } /* Oportunidade */
 .word:nth-child(7) { top: 250px; left: 20px; } /* Mérito */
 .word:nth-child(8) { bottom: 30px; left: 50px; } /* Direitos */
-.word:nth-child(9) { top: 180px; right: 250px; } /* Respeito */
-.word:nth-child(10) { bottom: 100px; right: 50px; } /* Protagonismo */
+.word:nth-child(9) { top: 180px; right: 50px; } /* Respeito */
+.word:nth-child(10) { bottom: 100px; right: 40px; } /* Protagonismo */
 .word:nth-child(11) { top: 280px; left: 350px; } /* Recursos */
 .word:nth-child(12) { top: 0px; left: 400px; } /* Interseccionalidade */
-.word:nth-child(13) { top: 100px; left: 200px; } /* Voz */
-.word:nth-child(14) { bottom: 50px; right: 400px; } /* Imparcialidade */
-.word:nth-child(15) { bottom: 10px; right: 150px; } /* Transformação */
+.word:nth-child(13) { top: 100px; left: 150px; } /* Voz */
+.word:nth-child(14) { bottom: 50px; right: 300px; } /* Imparcialidade */
+.word:nth-child(15) { bottom: 10px; right: 60px; } /* Transformação */
 .word:nth-child(16) { top: 180px; left: 240px; } /* Equidade */
 
 
