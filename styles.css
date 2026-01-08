@@ -312,7 +312,9 @@ h5[dir="rtl"] {
     }
     
     .close-btn {
-        display: none; /* Mantém a sidebar aberta na versão simplificada para mobile */
+        display: inline-flex; /* Exibe o botão fechar também em telas menores */
+        align-items: center;
+        justify-content: center;
     }
 
     .module-list {
@@ -458,6 +460,18 @@ h1 {
     font-size: 1.1em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+/* Esconder a sidebar em telas menores que 900px (menor que 900px) */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    /* Garante que o conteúdo ocupe toda a largura quando a sidebar estiver escondida */
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+}
 
 #description-box p {
     margin: 0;
@@ -556,4 +570,37 @@ img, video {
     text-align: left;
     font-size: 1.4em;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Toggle JS: esconder a sidebar via classe e mostrar botão hambúrguer */
+.sidebar.sidebar--hidden {
+    display: none !important;
+}
+
+.hamburger-btn {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 9999;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Se a sidebar estiver escondida (classe adicionada por JS), mostra o hambúrguer se ele for irmão posterior */
+.sidebar.sidebar--hidden + .hamburger-btn {
+    display: inline-flex;
+}
+
+/* Ajusta conteúdo quando a sidebar estiver colapsada */
+body.sidebar-collapsed .main-content {
+    margin-left: 0 !important;
 }
