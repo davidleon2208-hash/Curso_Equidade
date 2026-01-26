@@ -10,6 +10,19 @@
 </head>
 
 <body>
+    <script>
+        let senha;
+        do {
+            senha = prompt("Por favor, insira a senha para acessar este módulo:");
+            if (senha === null) {
+                alert("Acesso cancelado. Você será redirecionado para a página inicial.");
+                window.location.href = "index.html";
+                break;
+            } else if (senha !== "pv2026") {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        } while (senha !== "pv2026");
+    </script>
     <nav class="sidebar">
     <div class="sidebar-header">
         <h3 class="sidebar-title">Módulos do Curso</h3>
@@ -22,7 +35,7 @@
         <li><a href="md04.html" class="module-item disabled">Módulo 4 – Assédio e Violências no ambiente de trabalho</a></li>
         <li><a href="md05.html" class="module-item disabled">Módulo 5 – Saúde mental de trabalhadoras e trabalhadores da SUS</a></li>
     </ul>
-</nav>
+    </nav>
     <div class="app-container">
         <main class="main-content">
             <header class="content-header">
