@@ -10,26 +10,6 @@
 </head>
 
 <body>
-    <script>
-    let acessoAutorizado = localStorage.getItem("moduloAcesso");
-
-    if (acessoAutorizado !== "true") {
-        let senha;
-        do {
-            senha = prompt("Por favor, insira a senha para acessar este módulo:");
-
-            if (senha === null) {
-                alert("Acesso cancelado. Você será redirecionado para a página inicial.");
-                window.location.href = "index.html";
-                break;
-            } else if (senha === "pv2026") {
-                localStorage.setItem("moduloAcesso", "true");
-            } else {
-                alert("Senha incorreta. Tente novamente.");
-            }
-        } while (senha !== "pv2026");
-    }
-    </script>
     <nav class="sidebar">
     <div class="sidebar-header">
         <h3 class="sidebar-title">Módulos do Curso</h3>
@@ -38,9 +18,9 @@
     <ul class="module-list">
         <li><a href="md01.html" class="module-item">Módulo 1 – Equidade em Saúde</a></li>
         <li><a href="md02.html" class="module-item">Módulo 2 – População vulnerabilizada: Saúde, cenários de trabalho e políticas de equidade</a></li>
-        <li><a href="md03.html" class="module-item disabled">Módulo 3 – Racismo e outros marcadores de preconceito e discriminação</a></li>
-        <li><a href="md04.html" class="module-item disabled">Módulo 4 – Assédio e Violências no ambiente de trabalho</a></li>
-        <li><a href="md05.html" class="module-item disabled">Módulo 5 – Saúde mental de trabalhadoras e trabalhadores da SUS</a></li>
+        <li><a href="md03.html" class="module-item">Módulo 3 – Racismo e outros marcadores de preconceito e discriminação</a></li>
+        <li><a href="md04.html" class="module-item">Módulo 4 – Assédio e Violências no ambiente de trabalho</a></li>
+        <li><a href="md05.html" class="module-item">Módulo 5 – Saúde mental de trabalhadoras e trabalhadores da SUS</a></li>
     </ul>
     </nav>
     <div class="app-container">
@@ -56,44 +36,43 @@
                 <span class="page-title-mobile">Educação Profissional Equidade em Saúde</span>
             </header>
 
-            <h1 class="main-heading">Módulo 2: População vulnerabilizada: Saúde, cenários de trabalho e políticas de equidade</h1>
+            <h1 class="main-heading">Módulo 03: Racismo e outros marcadores de preconceito e Discriminação</h1>
             <h5 dir="rtl">1. Seção</h5>
 
             <section>
             <div class="content-card_mod">
                 <div class="resumo_mod">
                 <h2>Introdução</h2>
-                    <p>Este módulo aborda os conceitos fundamentais sobre população vulnerabilizada, explorando as questões de saúde, cenários de trabalho e as políticas públicas de equidade que buscam proteger e promover direitos.</p>
+                    <p>Este módulo aborda os conceitos fundamentais sobre racismo e outros marcadores de preconceito e discriminação, explorando como esses fenômenos afetam a saúde e o acesso a serviços públicos.</p>
                     <div>
-                        <img src="imagem/vulnerabilidade.png" alt="Banner" style="max-width: 800px; height: 300px;">
+                        <img src="#" alt="Banner" style="max-width: 800px; height: 300px;">
                     </div>
 
-                <h2>⚖️ vulnerabilidade</h2>
+                <h2>⚖️ Racismo</h2>
 
-                <p>A <strong>vulnerabilidade</strong> é um conceito que se refere à condição de pessoas ou grupos que enfrentam riscos maiores de serem prejudicados por fatores sociais, econômicos, políticos e culturais. Esses fatores podem incluir discriminação, pobreza, exclusão social e falta de acesso a serviços básicos como saúde e educação.</p>
+                <p>O racismo é um fenômeno social estrutural que se manifesta em diferentes formas, como preconceito, discriminação e exclusão. Ele afeta diretamente o acesso a serviços de saúde e a qualidade do cuidado recebido por grupos minoritários.</p>
 
-                <p>Em contextos de saúde, a vulnerabilidade pode resultar em desigualdades significativas no acesso aos cuidados médicos e na qualidade da assistência recebida. Por exemplo, populações indígenas, comunidades rurais isoladas e grupos minoritários frequentemente enfrentam barreiras para obter serviços de saúde adequados.</p>
-
+                <p>Em contextos de saúde, o racismo pode resultar em desigualdades significativas no acesso aos cuidados médicos e na qualidade da assistência recebida. Por exemplo, populações indígenas, comunidades rurais isoladas e grupos minoritários frequentemente enfrentam barreiras para obter serviços de saúde adequados.</p>
 
                 <div class="video-container">
                     <h2>Vídeo Explicativo</h2>
                     <video controls style="max-width: 800px; height: 450px;">
-                        <source src="video/Vulnabilidade.mp4" type="video/mp4">
+                        <source src="#" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                     <p>video explicativo gerado por inteligencia artificial</p>
                 </div>
                 <h2>dicas</h2>
                 <ul>
-                    <link rel="stylesheet" href="styles.css"><a href="https://www.youtube.com/watch?v=i6CI1odkEsY">Vulnerabilidade social e atenção à saúde</a>
+                    <link rel="stylesheet" href="styles.css"><a href="#">Racismo</a>
                     <br>
-                    <link rel="stylesheet" href="styles.css"><a href="https://www.youtube.com/watch?v=ezXJ7QLp7Mw">O Poder da Vulnerabilidade</a>
+                    <link rel="stylesheet" href="styles.css"><a href="#">Discriminação</a>
                 </ul>
             </div>
             </section>
             <div class="navigation-container">                
-                <a class="nav-button anterior" href="md01_agradecimento.html" role="button" aria-label="Voltar ao início">&lt; Inicial</a>
-                <a class="nav-button proximo" href="md02_nuvem.html" role="button" aria-label="Próximo conteúdo">Próximo &gt;</a>
+                <a class="nav-button anterior" href="md02_avaliacao.html" role="button" aria-label="Voltar ao início">&lt; Inicial</a>
+                <a class="nav-button proximo" href="md03_nuvem.html" role="button" aria-label="Próximo conteúdo">Próximo &gt;</a>
             </div>
             <hr class="section-divider">
             <footer class="page-footer">
