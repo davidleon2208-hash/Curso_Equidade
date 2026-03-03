@@ -46,3 +46,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.addEventListener('resize', updateVisibility);
 	});
 });
+
+const openButton = document.getElementById('open-support');
+const closeButton = document.getElementById('close-support');
+const popup = document.getElementById('support-popup');
+
+// Abre o formulário ao clicar no link do rodapé
+openButton.addEventListener('click', function(event) {
+    event.preventDefault(); // Impede o link de recarregar a página
+    popup.style.display = 'block';
+});
+
+// Fecha o formulário ao clicar no "X"
+closeButton.addEventListener('click', function() {
+    popup.style.display = 'none';
+});
+
+// Opcional: Fecha se o usuário clicar fora do formulário
+window.addEventListener('click', function(event) {
+    if (event.target === popup) {
+        popup.style.display = 'none';
+    }
+});
