@@ -68,3 +68,22 @@ window.addEventListener('click', function(event) {
         popup.style.display = 'none';
     }
 });
+function fazerLogin() {
+    const usuario = document.getElementById('user').value;
+    const senha = document.getElementById('pass').value;
+
+    // Simulação simples de validação
+    if (usuario === "admin" && senha === "123") {
+        sessionStorage.setItem('logado', 'true');
+        window.location.href = "index.html"; // Redireciona para o início do curso
+    } else {
+        alert("Usuário ou senha incorretos");
+    }
+}
+
+// Proteção de página: Adicione isso no topo dos seus arquivos .js
+function verificarAcesso() {
+    if (sessionStorage.getItem('logado') !== 'true') {
+        window.location.href = "login.html";
+    }
+}
