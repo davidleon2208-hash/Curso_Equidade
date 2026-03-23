@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Area do Aluno | Curso Equidade em Saude</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Modulos do Curso</h3>
+      <button class="close-btn material-icons">close</button>
+    </div>
+    <ul class="module-list">
+      <li><a href="aluno.html" class="module-item">Area do aluno</a></li>
+      <li><a href="md01.html" class="module-item">Modulo 1 - Equidade em Saude</a></li>
+      <li><a href="md02.html" class="module-item">Modulo 2 - Populacao vulnerabilizada</a></li>
+      <li><a href="md03.html" class="module-item">Modulo 3 - Racismo e preconceito</a></li>
+      <li><a href="md04.html" class="module-item">Modulo 4 - Assedio e violencias</a></li>
+      <li><a href="md05.html" class="module-item">Modulo 5 - Saude mental</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-container">
+    <main class="main-content">
+      <header class="content-header">
+        <div class="logo-placeholder">
+          <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#642f8d" />
+            <text x="50" y="65" font-family="Arial, sans-serif" font-size="40" fill="white" text-anchor="middle">PET</text>
+          </svg>
+        </div>
+        <span class="page-title-mobile">Area do Aluno</span>
+      </header>
+
+      <section id="dashboard-root" class="dashboard-shell">
+        <div class="content-card_mod">
+          <h1 class="main-heading">Carregando area do aluno...</h1>
+          <p>Estamos preparando seu painel com progresso, continuidade e reinicio do curso.</p>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+      <footer class="page-footer">
+        <div class="footer-box">
+          <img src="imagem/PET.png" alt="Logotipo PET Equidade" class="h-10 md:h-14 rounded-lg" />
+          <img src="imagem/NESP.png" alt="Logotipo NESP" class="h-10 md:h-14 rounded-lg" />
+          <img src="imagem/UFPI.png" alt="Logotipo UFPI" class="h-10 md:h-14 rounded-lg" />
+          <img src="imagem/ESPPI.png" alt="Logotipo ESP-PI" class="h-10 md:h-14 rounded-lg" />
+          <img src="imagem/sesapi.png" alt="Logotipo SESAPI" class="h-10 md:h-14 rounded-lg" />
+          <img src="imagem/SUS.png" alt="Logotipo SUS" class="h-10 md:h-14 rounded-lg" />
+        </div>
+        <p class="footer-academy">PET:Equidade</p>
+        <a href="#" id="open-support" class="footer-link">Suporte e ajuda</a>
+        <div id="support-popup" class="support-popup">
+          <div class="support-header">
+            <span>Fale Conosco</span>
+            <button id="close-support">&times;</button>
+          </div>
+
+          <form action="https://formspree.io/f/xzdalwjb" method="POST">
+            <label>
+              Seu email:
+              <input type="email" name="email" required placeholder="exemplo@email.com" />
+            </label>
+            <label>
+              Sua mensagem:
+              <textarea name="message" required placeholder="Como podemos ajudar?"></textarea>
+            </label>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+        <p class="footer-copyright">&copy; 2025, ESP-PI. Todos os direitos reservados</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="json.js"></script>
+</body>
+</html>

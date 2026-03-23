@@ -1,17 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Curso Equidade em Saude</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-    <div class="login-box">
-    <h2>Entrar no Curso</h2>
-    <input type="text" id="user" placeholder="Usuário">
-    <input type="password" id="pass" placeholder="Senha">
-    <button onclick="fazerLogin()">Entrar</button>
-</div>
-<script src="json.js"></script>
+<body class="auth-body">
+    <main class="auth-layout">
+        <section class="auth-panel auth-panel-featured">
+            <span class="auth-kicker">Curso Equidade em Saude</span>
+            <h1>Acompanhe o curso com login, progresso e retomada.</h1>
+            <p>
+                Entre com sua conta para visualizar o andamento do curso, continuar
+                de onde parou e acessar a area do aluno.
+            </p>
+            <div class="auth-feature-list">
+                <div class="auth-feature-card">
+                    <strong>Progresso automatico</strong>
+                    <span>Cada pagina visitada atualiza o andamento do cursista.</span>
+                </div>
+                <div class="auth-feature-card">
+                    <strong>Area do aluno</strong>
+                    <span>Veja modulos concluidos, ultimo acesso e proximo passo.</span>
+                </div>
+                <div class="auth-feature-card">
+                    <strong>Base pronta para nuvem</strong>
+                    <span>Cadastro e progresso podem sincronizar com Firebase.</span>
+                </div>
+            </div>
+            <a class="auth-back-link" href="index.html">Voltar para a pagina inicial</a>
+        </section>
+
+        <section class="auth-panel auth-panel-form">
+            <div class="auth-tabs" role="tablist" aria-label="Autenticacao">
+                <button class="auth-tab is-active" type="button" data-auth-tab="login">Entrar</button>
+                <button class="auth-tab" type="button" data-auth-tab="register">Cadastrar</button>
+            </div>
+
+            <form id="login-form" class="auth-form" data-auth-form="login">
+                <h2>Entrar na plataforma</h2>
+                <label class="auth-label" for="login-email">Email</label>
+                <input class="auth-input" type="email" id="login-email" name="email" placeholder="voce@exemplo.com" required />
+
+                <label class="auth-label" for="login-password">Senha</label>
+                <input class="auth-input" type="password" id="login-password" name="password" placeholder="Digite sua senha" required />
+
+                <button class="auth-submit" type="submit">Entrar e continuar curso</button>
+            </form>
+
+            <form id="register-form" class="auth-form is-hidden" data-auth-form="register">
+                <h2>Criar conta do aluno</h2>
+                <label class="auth-label" for="register-name">Nome completo</label>
+                <input class="auth-input" type="text" id="register-name" name="name" placeholder="Seu nome completo" required />
+
+                <label class="auth-label" for="register-email">Email</label>
+                <input class="auth-input" type="email" id="register-email" name="email" placeholder="voce@exemplo.com" required />
+
+                <label class="auth-label" for="register-password">Senha</label>
+                <input class="auth-input" type="password" id="register-password" name="password" placeholder="Crie uma senha com pelo menos 6 caracteres" minlength="6" required />
+
+                <button class="auth-submit" type="submit">Cadastrar aluno</button>
+            </form>
+
+            <div id="auth-feedback" class="auth-feedback" aria-live="polite"></div>
+
+            <div class="auth-note">
+                O cadastro funciona localmente agora e pode sincronizar com banco em nuvem
+                quando o arquivo <code>firebase-config.js</code> for configurado.
+            </div>
+        </section>
+    </main>
+
+    <script src="json.js"></script>
 </body>
 </html>
