@@ -63,6 +63,8 @@ a:hover {
     top: 0;
     left: 0;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-header {
@@ -90,6 +92,13 @@ a:hover {
 .module-list {
     list-style: none;
     padding-right: 10px; /* evita overflow horizontal em telas pequenas */
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .module-item {
@@ -548,14 +557,43 @@ img, video {
 /* --- Container da Nuvem de Palavras --- */
 .word-cloud-container {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 18px 22px;
     max-width: 800px; /* Mude para max-width */
     width: 100%; /* Garante que ocupe a largura disponível */
-    height: 400px; /* Mantenha a altura para o posicionamento absoluto */
+    min-height: 400px;
+    height: auto;
     margin: 0 auto;
+    padding: 24px;
+    overflow: hidden;
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.word-cloud-container .word {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.25;
+    white-space: normal;
+}
+
+@media (max-width: 768px) {
+    .word-cloud-container {
+        min-height: 320px;
+        gap: 14px 16px;
+        padding: 20px 16px;
+    }
 }
 
 /* --- Caixa de Descrição Abaixo da Nuvem --- */
@@ -935,11 +973,12 @@ button[type="submit"]:hover {
 }
 
 .module-item-logout {
-    width: 100%;
+    width: auto;
     border: none;
     text-align: left;
     cursor: pointer;
     font-size: 1rem;
+    margin-bottom: 0;
 }
 
 .student-progress-banner {

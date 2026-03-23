@@ -197,13 +197,83 @@ function createEmptyProgress() {
     };
 }
 
+async function hashPassword(password, salt) {
+    const normalizedInput = `${salt}:${password}`;
+
+    if (window.crypto && window.crypto.subtle && typeof TextEncoder !== 'undefined') {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(normalizedInput);
+        const digest = await crypto.subtle.digest('SHA-256', data);
+
+        return Array.from(new Uint8Array(digest))
+            .map((value) => value.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    let hash = 2166136261;
+    for (let index = 0; index < normalizedInput.length; index += 1) {
+        hash ^= normalizedInput.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+    }
+
+    return `fallback-${(hash >>> 0).toString(16)}`;
+}
+
+function generatePasswordSalt() {
+    if (window.crypto && typeof crypto.getRandomValues === 'function') {
+        const randomValues = crypto.getRandomValues(new Uint8Array(16));
+        return Array.from(randomValues)
+            .map((value) => value.toString(16).padStart(2, '0'))
+            .join('');
+    }
+
+    return `salt-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+async function createPasswordCredentials(password) {
+    const passwordSalt = generatePasswordSalt();
+    const passwordHash = await hashPassword(password, passwordSalt);
+
+    return {
+        passwordSalt,
+        passwordHash
+    };
+}
+
+async function verifyUserPassword(user, password) {
+    if (user.passwordHash && user.passwordSalt) {
+        const candidateHash = await hashPassword(password, user.passwordSalt);
+        return candidateHash === user.passwordHash;
+    }
+
+    return user.password === password;
+}
+
+async function migrateLegacyPassword(user, password) {
+    if (!user || user.passwordHash || user.password !== password) {
+        return user;
+    }
+
+    const passwordCredentials = await createPasswordCredentials(password);
+    const migratedUser = {
+        ...user,
+        ...passwordCredentials,
+        password: undefined,
+        updatedAt: new Date().toISOString()
+    };
+
+    updateUserRecord(migratedUser);
+    return migratedUser;
+}
+
 function buildUserRecord({ name, email, password, uid, source }) {
     const now = new Date().toISOString();
     return {
         id: uid || `local-${Date.now()}`,
         name: String(name || '').trim(),
         email: normalizeEmail(email),
-        password,
+        passwordHash: password.passwordHash,
+        passwordSalt: password.passwordSalt,
         source: source || 'local',
         progress: createEmptyProgress(),
         createdAt: now,
@@ -394,10 +464,11 @@ async function registerStudent({ name, email, password }) {
         throw new Error('Ja existe um usuario cadastrado com esse email.');
     }
 
+    const passwordCredentials = await createPasswordCredentials(normalizedPassword);
     let user = buildUserRecord({
         name: trimmedName,
         email: normalizedEmail,
-        password: normalizedPassword,
+        password: passwordCredentials,
         source: 'local'
     });
 
@@ -422,7 +493,7 @@ async function registerStudent({ name, email, password }) {
 async function loginStudent({ email, password }) {
     const normalizedEmail = normalizeEmail(email);
     const normalizedPassword = String(password || '');
-    const localUser = findUserByEmail(normalizedEmail);
+    let localUser = findUserByEmail(normalizedEmail);
 
     if (firebaseState.available) {
         try {
@@ -436,10 +507,13 @@ async function loginStudent({ email, password }) {
         }
     }
 
-    if (!localUser || localUser.password !== normalizedPassword) {
+    const passwordIsValid = localUser ? await verifyUserPassword(localUser, normalizedPassword) : false;
+
+    if (!localUser || !passwordIsValid) {
         throw new Error('Email ou senha invalidos.');
     }
 
+    localUser = await migrateLegacyPassword(localUser, normalizedPassword);
     return localUser;
 }
 
@@ -552,8 +626,9 @@ function setupSupportPopup() {
 }
 
 function injectSidebarStudentLinks() {
+    const sidebar = document.querySelector('.sidebar');
     const moduleList = document.querySelector('.module-list');
-    if (!moduleList || moduleList.querySelector('[data-student-shortcuts="true"]')) {
+    if (!sidebar || !moduleList || moduleList.querySelector('[data-student-shortcuts="true"]')) {
         return;
     }
 
@@ -561,15 +636,21 @@ function injectSidebarStudentLinks() {
     shortcutWrapper.setAttribute('data-student-shortcuts', 'true');
     shortcutWrapper.innerHTML = `
         <a href="aluno.html" class="module-item module-item-highlight">Area do aluno</a>
-        <button class="module-item module-item-logout" type="button" id="student-logout-button">Sair da conta</button>
     `;
 
     moduleList.prepend(shortcutWrapper);
 
-    const logoutButton = document.getElementById('student-logout-button');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', logoutStudent);
+    let sidebarFooter = sidebar.querySelector('.sidebar-footer');
+    if (!sidebarFooter) {
+        sidebarFooter = document.createElement('div');
+        sidebarFooter.className = 'sidebar-footer';
+        sidebarFooter.innerHTML = `
+            <button class="module-item module-item-logout" type="button" id="student-logout-button">Sair da conta</button>
+        `;
+        sidebar.appendChild(sidebarFooter);
     }
+
+    sidebarFooter.querySelector('#student-logout-button').addEventListener('click', logoutStudent);
 }
 
 function injectCourseProgressBanner(currentPage) {
@@ -866,19 +947,26 @@ async function loginCloudStudent({ email, password, localUser }) {
     const firebaseUser = credentials.user;
     const documentReference = await firebase.firestore().collection('alunos').doc(firebaseUser.uid).get();
     const cloudData = documentReference.exists ? documentReference.data() : {};
+    const passwordCredentials = localUser && localUser.passwordHash && localUser.passwordSalt
+        ? {
+            passwordHash: localUser.passwordHash,
+            passwordSalt: localUser.passwordSalt
+        }
+        : await createPasswordCredentials(password);
 
     const mergedUser = {
         ...(localUser || buildUserRecord({
             name: firebaseUser.displayName || email,
             email,
-            password,
+            password: passwordCredentials,
             uid: firebaseUser.uid,
             source: 'firebase'
         })),
         id: firebaseUser.uid,
         name: cloudData.name || firebaseUser.displayName || (localUser ? localUser.name : email),
         email,
-        password: localUser ? localUser.password : password,
+        ...passwordCredentials,
+        password: undefined,
         source: 'firebase',
         progress: cloudData.progress || (localUser ? localUser.progress : createEmptyProgress()),
         updatedAt: new Date().toISOString()

@@ -44,11 +44,13 @@
 
             <section>
                 <div id="description-box">
-                    <iframe
-                        src="https://forms.gle/2BeShffAytcJNEHRA"
-                        width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">
-                        Carregando…
-                    </iframe>
+                    <div class="card">
+                        <h3>Avaliacao do modulo</h3>
+                        <p>Para garantir que o formulario abra corretamente, a avaliacao foi disponibilizada em uma nova aba.</p>
+                        <div class="dashboard-actions">
+                            <a class="dashboard-button dashboard-button-primary" href="https://forms.gle/2BeShffAytcJNEHRA" target="_blank" rel="noopener noreferrer">Abrir avaliacao</a>
+                        </div>
+                    </div>
                 </div>
 
             </section>
@@ -111,17 +113,6 @@
         </main>
     </div>
     <script src="json.js"></script>
-    <script>
-        // JavaScript para exibir a descrição (Simulando uma ação de clique sem recarregar a página)
-        document.querySelectorAll('.word').forEach(wordLink => {
-            wordLink.addEventListener('click', function (event) {
-                event.preventDefault(); // Impede o link de recarregar a página
-                const description = this.getAttribute('data-description');
-                const descriptionBox = document.getElementById('description-box');
-                descriptionBox.innerHTML = `<p>${description}</p>`;
-            });
-        });
-    </script>
 </body>
 
 </html>
